@@ -18,3 +18,19 @@ f.close()
 o=[]
 pp=[]
 k=[]
+
+uu=0
+ee=0
+i=0
+llen=len(l)
+while(i<llen):
+    if l[i][0]=="var":
+        kq=l[i][1]
+        pp.append(kq)
+        pp.append(i)
+        ee=ee+1
+        i+=1
+    else:
+        i+=1
+        break
+        
