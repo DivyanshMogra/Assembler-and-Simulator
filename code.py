@@ -185,3 +185,25 @@ for i in range(ee,len(l)):
         output_error+="Error at line" + str(i + 1) + " Incomplete command or register missing "+'\n'
         err = 1
 i=0
+klen=len(l)-1
+while(i<klen):
+    if l[i][0]=="hlt":
+        
+        output_error+="Error at line"+str(i+1)+" hlt cmmnd cannot be used in between"+'\n'
+        err=1
+    i+=1
+if l[len(l)-1][0]!="hlt":
+    output_error+="Error at line" + str(len(l)) + " hlt cmmnd was no used in end"+'\n'
+    err=1
+if err==0:
+    f=open('output.txt','w')
+    s=''
+    for i in binary:
+        s+=i+'\n'
+    s+="0101000000000000"
+    f.write(s)
+    f.close()
+else:
+    f=open('errors.txt','w')
+    f.write(output_error)
+    f.close()
