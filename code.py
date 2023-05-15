@@ -183,7 +183,13 @@ for i in range(ee,len(l)):
             else:
                 output_error+="Error at line" + str(i + 1) + " variable not declared  "+'\n'
                 err=1
-                
+
+            binary.append(p)
+            p = ""
+        else:
+            output_error+="Error at line" + str(i + 1) + " Incomplete command or register missing "+'\n'
+            err = 1
+
     elif checkvar in dict5:
         klen=len(l[i])
         if klen==2:
