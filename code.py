@@ -120,3 +120,34 @@ for i in range(ee,len(l)):
         else:
             output_error+="Error at line" + str(i + 1) + " Incomplete command or register missing "+'\n'
             err=1
+    elif checkvar in dict2:
+        klen=len(l[i])
+        if klen==3:
+            p = str()
+            flag = 0
+            j=0
+            while(j<len(l[i])):
+                rw=l[i][j]
+                if rw in dict2:
+                    val1=2
+                    #print(rw,dict2)
+                    ind = dict2.index(l[i][j])
+                    p = p + dict2[ind + 1]
+                    j+=1
+                    if flag == 0:
+                        p = p + '00000'
+                    flag = 1
+                else:
+                    j+=1
+                    output_error+="Error at line" + str(i + 1) + " wrong register value "+'\n'
+                    err=1
+            binary.append(p)
+            p=""
+        else:
+            output_error+="Error at line" + str(i + 1) + " Incomplete command or register missing "+'\n'
+            err = 1
+        if l[i][2]=='FLAGS' and checkvar!='mov':
+            output_error+="Error at line" + str(i + 1) + " Flag command can only be used with mov command "+'\n'
+            err = 1
+    
+   
