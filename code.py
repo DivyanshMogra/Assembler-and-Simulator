@@ -49,3 +49,37 @@ while(i>=ee and i<lllen):
         uu=uu+1
     i+=1
 l=list(filter(None,l))
+for i in range(ee,len(l)):
+    checkvar=l[i][0]
+    if checkvar=="hlt":
+        pass
+    elif checkvar=="var":
+        output_error+="Error at line" + str(i + 1) + " variable declared in between "+'\n'
+        err=1
+
+
+
+    elif checkvar in dict:
+        p = str()
+        flag = 0
+        llenl=len(l[i])
+        if llenl==4:
+            j=0
+            while(j<len(l[i])):
+                rw=l[i][j]
+                if rw in dict:
+                    ind = dict.index(l[i][j])
+                    p = p + dict[ind + 1]
+                    j+=1
+                    if flag == 0:
+                        p = p + '00'
+                    flag = 1
+                else:
+                    j+=1
+                    output_error+="Error at line" + str(i + 1) + " wrong register value "+'\n'
+                    err=1
+            binary.append(p)
+            p=""
+        else:
+            output_error+="Error at line"+str(i+1)+"Incomplete command or register missing"+'\n'
+            err=1
