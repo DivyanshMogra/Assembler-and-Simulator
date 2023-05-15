@@ -150,7 +150,40 @@ for i in range(ee,len(l)):
             output_error+="Error at line" + str(i + 1) + " Flag command can only be used with mov command "+'\n'
             err = 1
     
-   
+    elif checkvar in dict3:
+        klen=len(l[i])
+        if klen==3:
+            if l[i][2] in pp:
+                p = str()
+                flag = 0
+                j=0
+                while(j<len(l[i])-1):
+                    rw=l[i][j]
+                    if rw in dict3:
+                        ind = dict3.index(rw)
+                        j+=1
+                        p = p + dict3[ind + 1]
+                    else:
+                        j+=1
+                        output_error+="Error at line" + str(i + 1) + " wrong register value "+'\n'
+                        err=1
+                v=pp.index(l[i][2])
+                qw=v+1
+                v=pp[qw]
+
+                u = bin(i-ee+1)
+                u=u[2:]
+                u = str(u)
+                t = 8 - len(u)
+                a=0
+                while(a< t):
+                    u = '0' + u
+                    a+=1
+                p = p + u
+            else:
+                output_error+="Error at line" + str(i + 1) + " variable not declared  "+'\n'
+                err=1
+                
     elif checkvar in dict5:
         klen=len(l[i])
         if klen==2:
