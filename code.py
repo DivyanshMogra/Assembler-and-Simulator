@@ -83,3 +83,40 @@ for i in range(ee,len(l)):
         else:
             output_error+="Error at line"+str(i+1)+"Incomplete command or register missing"+'\n'
             err=1
+    elif checkvar in dict4 and "$" in l[i][2]:
+        klen=len(l[i])
+        if klen==3:
+            p = str()
+            j=0
+            while(j< klen-1):
+                if l[i][j] in dict4:
+                    ind = dict4.index(l[i][j])
+                    j+=1
+                    p = p + dict4[ind + 1]
+                else:
+                    j+=1
+                    output_error+="Error at line" + str(i + 1) + "  wrong register value  "+'\n'
+                    err = 1
+            y=str(l[i][2])
+            tt=y
+            tt=tt[1:]
+            tt=int(tt)
+            if "$" in y and (tt <=255 and tt>=0):
+                y=y[1:]
+                u = bin(int(y))
+                u=u[2:]
+                u = str(u)
+                t = 8 - len(u)
+                q=0
+                while(q< t):
+                    u = '0' + u
+                    q+=1
+                p = p + u
+                binary.append(p)
+                p = ""
+            else:
+                output_error+="Error at line" + str(i + 1) + " IMM not in range or invalid imm syntax "+'\n'
+                err=1
+        else:
+            output_error+="Error at line" + str(i + 1) + " Incomplete command or register missing "+'\n'
+            err=1
