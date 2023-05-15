@@ -33,4 +33,19 @@ while(i<llen):
     else:
         i+=1
         break
-        
+binary=[]
+err=0
+output_error=''
+i=ee
+lllen=len(l)
+while(i>=ee and i<lllen):
+    if l[i][0]!="var":
+        p = l[i][0]
+        if p[-1] == ':':
+            p=p[:len(p)-1]
+            o.append(p)
+            o.append(uu)
+            l[i].pop(0)
+        uu=uu+1
+    i+=1
+l=list(filter(None,l))
