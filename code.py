@@ -151,3 +151,37 @@ for i in range(ee,len(l)):
             err = 1
     
    
+    elif checkvar in dict5:
+        klen=len(l[i])
+        if klen==2:
+            if l[i][1] not in o:
+                output_error+="Error at line" + str(i + 1) + " label not declared "+'\n'
+                err=1
+            else:
+                p=''
+                ind = dict5.index(checkvar)
+                sq='000'
+                p=p+dict5[ind + 1]
+                p=p+sq
+                ind=o.index(l[i][1])
+                qww=ind+1
+                u=o[qww]
+
+                u = bin(u)
+                u=u[2:]
+                t = 8 - len(u)
+                a=0
+                while(a< t):
+                    u = '0' + u
+                    a+=1
+                p=p+u
+                binary.append(p)
+                p = ""
+
+        else:
+            output_error+="Error at line"+str(i+1)+" Invalid syntax "+'\n'
+            err=1
+    else:
+        output_error+="Error at line" + str(i + 1) + " Incomplete command or register missing "+'\n'
+        err = 1
+i=0
