@@ -196,7 +196,7 @@ counter=0
 flag=False
 pc = 0
 l = []
-for k in f:
+for k in sys.stdin:
     k=k.replace("\n","")
     l.append(k)
 klen=len(l)
