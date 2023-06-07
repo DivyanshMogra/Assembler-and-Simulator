@@ -162,4 +162,22 @@ def rec(i, p):
         else:
             p += 1
         r["111"] = "0000000000000000"
+    if i[:5] == '11101':            #jgt
+        k16=r["111"][14]
+        if (k16 == "1"):
+            k16a=int(i[8:16], 2)
+            p = k16a
+        else:
+            p += 1
+        r["111"] = "0000000000000000"
+
+
+    if i[:5] == '11010':            #hlt
+        fret=True
+        p += 1
+        r["111"] = "0000000000000000"
+        return fret, p
+    else:
+        fret=False
+        return fret, p
 
